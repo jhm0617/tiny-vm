@@ -8,12 +8,13 @@ s(48,2,0,0);s(49,2,1,0);s(50,2,1,0);s(51,2,0,0);s(52,0,0,0);s(64,0,1,1);s(65,0,2
 function run(p,g){
  const D=new Int32Array(256),C=new Int32Array(64),M=new Int32Array(256),o=[];
  let sp=0,cp=0,pc=0,ip=0,st=0;
+ const plen=p.length;
  for(;;){
   if(st===1e6)return[o,10];
-  if(pc<0||pc>=p.length)return[o,9];
+  if(pc<0||pc>=plen)return[o,9];
   const op=p[pc],im=IM[op];
   if(im===255)return[o,5];
-  if(pc+im>=p.length)return[o,9];
+  if(pc+im>=plen)return[o,9];
   st++;const nx=pc+1+im;
   if(sp<PO[op])return[o,2];
   if(sp-PO[op]+PU[op]>256)return[o,3];
